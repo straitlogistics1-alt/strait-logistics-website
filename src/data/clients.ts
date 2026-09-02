@@ -1,0 +1,28 @@
+import type { Client } from "@/types/company";
+
+export const clients: Client[] = [
+  { id: "ergo-auto", name: "ERGO AUTO LTD" },
+  { id: "dee-ess-buhin", name: "DEE-ESS BUHIN PVT. LTD" },
+  { id: "kaytex-exports", name: "KAYTEX EXPORTS" },
+  { id: "sadhu-forgings", name: "SADHU FORGINGS LTD" },
+  { id: "kishore-exports", name: "KISHORE EXPORTS" },
+  { id: "saurer-embroidery", name: "SAURER EMBROIDERIES SYSTEMS INDIA PVT. LTD." },
+  { id: "kesara-syntax", name: "KESARA SYNTAX" },
+  { id: "rlf", name: "RLF LIMITED" },
+  { id: "deepak-industries", name: "DEEPAK INDUSTRIES LTD." },
+  { id: "hr-international", name: "H.R. INTERNATIONAL" },
+  { id: "lakshay-international", name: "LAKSHAY INTERNATIONAL" },
+  { id: "osna-electronics", name: "OSNA ELECTRONICS PVT. LTD." },
+  { id: "ss-embroideries", name: "SS EMBROIDERIES (PUNJAB)" },
+  { id: "charming-embroideries", name: "CHARMING EMBROIDERIES (PUNJAB)" },
+  { id: "shri-lakshmi-narayan", name: "SHRI LAKSHMI NARAYAN EMBROIDERIES (PUNJAB & GUJRAT)" },
+  { id: "jai-fab", name: "JAI FAB" },
+  { id: "yash-exports", name: "YASH EXPORTS" },
+  { id: "craft-style", name: "CRAFT & STYLE" },
+  { id: "m-sui-machines", name: "M-SUI MACHINES PVT. LTD" },
+  { id: "kp-embroideries", name: "K.P. EMBROIDERIES" },
+  { id: "sm-modes", name: "S.M. MODES, MUMBAI" },
+  { id: "daniyal-steel-crafts", name: "DANIYAL STEEL CRAFTS, MEERUT" },
+  { id: "roulunds-braking", name: "ROULUNDS BRAKING INDIA" },
+  { id: "mat-brakes", name: "MAT BRAKES INDIA PVT LTD" },
+];
