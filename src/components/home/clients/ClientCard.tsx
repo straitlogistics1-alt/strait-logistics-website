@@ -11,7 +11,7 @@ export function ClientCard({ client }: ClientCardProps) {
   return (
     <article className="group relative aspect-[1.18/1] overflow-hidden rounded-[22px]">
       {/* Full-card background image */}
-      {client.logo ? (
+      {client.image ? (
         <Image
           src={client.image}
           alt={client.name}

@@ -1,7 +1,7 @@
 import { ClientsBackground } from "./ClientsBackground";
 import { ClientsGrid  } from "./ClientsCarousel";
 import { ClientsHeader } from "./ClientsHeader";
-import { ClientStats } from "./ClientStats";
+
 
 export function Clients() {
   return (
@@ -16,7 +16,6 @@ export function Clients() {
 
         <ClientsGrid  />
 
-        <ClientStats />
       </div>
     </section>
   );

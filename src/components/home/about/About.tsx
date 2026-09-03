@@ -13,12 +13,7 @@ export function About() {
 
           <AboutVisual />
         </div>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <AboutVisual />
-          
-          <AboutContent />
-
-        </div>
+        
       </div>
     </section>
   );

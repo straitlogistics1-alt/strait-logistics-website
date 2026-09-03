@@ -3,7 +3,11 @@ import {
   companyStats,
 } from "@/data/company";
 
-import type { AboutStat } from "@/types/home";
+type AboutStat = {
+  icon: string;
+  value: string;
+  label: string;
+};
 
 export const aboutContent = {
   eyebrow: "About Us",
