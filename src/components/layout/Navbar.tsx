@@ -48,7 +48,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={closeMenu}
-              className={`group relative py-2 text-[0.72rem] font-semibold uppercase tracking-[0.02em] transition-colors duration-300 ${
+              className={`group relative py-2 text-sm font-semibold uppercase tracking-[0.02em] transition-colors duration-300 ${
                 index === 0
                   ? "text-brand-accent"
                   : "text-text-on-light-primary hover:text-brand-accent"
@@ -67,7 +67,7 @@ export function Navbar() {
           {/* CTA */}
           <a
             href={`mailto:${email}`}
-            className="rounded-button bg-action-primary px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.02em] text-white transition-colors duration-300 hover:bg-action-primary-hover"
+            className="rounded-button bg-action-primary px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.02em] text-white transition-colors duration-300 hover:bg-action-primary-hover"
           >
             Get in Touch
           </a>

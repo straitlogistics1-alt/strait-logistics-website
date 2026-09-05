@@ -12,6 +12,7 @@ export function Footer() {
   ];
 
   const phoneNumbers = [...contactInfo.phone, ...contactInfo.mobile];
+  const email = contactInfo.email[0];
 
   return (
     <footer className="border-t border-border-subtle bg-background-page">
@@ -123,7 +124,7 @@ export function Footer() {
             </p>
 
             <Link
-              href="#contact"
+              href={`mailto:${email}`}
               className="mt-5 inline-flex min-h-11 items-center justify-center rounded-button bg-action-primary px-7 text-xs font-bold uppercase tracking-wide text-text-primary transition-colors hover:bg-action-primary-hover"
             >
               Send Enquiry
