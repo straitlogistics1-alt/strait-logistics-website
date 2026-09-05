@@ -33,6 +33,7 @@ export function Navbar() {
             width={210}
             height={70}
             priority
+            quality={100}
             className="h-auto w-[140px] md:w-[155px]"
           />
         </Link>

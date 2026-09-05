@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 import { company, contactInfo } from "@/data/company";
+import { navigation } from "@/data/navigation";
 
 export function Footer() {
   const address = [
@@ -15,7 +16,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-background-page">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-12 md:px-8 md:py-16 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_1.3fr_0.85fr] lg:gap-16">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.25fr_0.7fr_1.2fr_0.8fr] lg:gap-12">
           {/* Company */}
           <div>
             <Image
@@ -23,6 +24,7 @@ export function Footer() {
               alt={company.name}
               width={210}
               height={70}
+              quality={100}
               className="h-auto w-[180px]"
             />
 
@@ -30,6 +32,25 @@ export function Footer() {
               Your trusted logistics partner for customs clearance, freight
               forwarding and end-to-end supply chain solutions.
             </p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.08em] text-text-accent">
+              Navigation
+            </p>
+
+            <nav className="mt-5 flex flex-col gap-3" aria-label="Footer navigation">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="w-fit text-sm text-text-secondary transition-colors hover:text-text-primary"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
           {/* Contact Information */}
@@ -41,7 +62,7 @@ export function Footer() {
             <div className="mt-5 space-y-4">
               {/* Address */}
               <Link
-                href={contactInfo.address.mapUrl} 
+                href={contactInfo.address.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-start gap-3"

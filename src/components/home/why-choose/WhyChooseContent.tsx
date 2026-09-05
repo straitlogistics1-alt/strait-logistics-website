@@ -13,7 +13,7 @@ export function WhyChooseContent() {
       </p>
 
       {/* Heading */}
-      <h2 className="mt-4 text-[clamp(2.25rem,3.2vw,3.5rem)] font-extrabold leading-[1.12] tracking-[-0.035em] text-text-primary">
+      <h2 className="mt-4 font-heading text-[clamp(2.25rem,3.2vw,3.5rem)] font-extrabold leading-[1.12] tracking-[-0.035em] text-text-primary">
         {titleLines.map((line) => (
           <span
             key={line}

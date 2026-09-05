@@ -5,7 +5,7 @@ export function CommoditiesHeader() {
         Commodities
       </p>
 
-      <h2 className="mt-3 text-[clamp(2rem,3vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-text-primary">
+      <h2 className="mt-3 font-heading text-[clamp(2rem,3vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-text-primary">
         Commodities We Handle
       </h2>
 

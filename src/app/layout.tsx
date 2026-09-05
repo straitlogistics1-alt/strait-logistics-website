@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { IBM_Plex_Sans, Inter } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,13 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} flex min-h-screen flex-col font-sans`}>
+      <body
+        className={`${ibmPlexSans.variable} ${inter.variable} flex min-h-screen flex-col font-sans`}
+      >
         <Navbar />
-
-        <main className="flex-1">
-          {children}
-        </main>
-
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

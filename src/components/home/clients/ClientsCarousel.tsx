@@ -1,54 +1,66 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { clientsContent } from "@/data/home/clients";
-
 import { ClientCard } from "./ClientCard";
 
 export function ClientsGrid() {
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const firstSetRef = useRef<HTMLDivElement>(null);
 
   const animationFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number | null>(null);
+  const positionRef = useRef(0);
+  const setWidthRef = useRef(0);
+
+  const [isReady, setIsReady] = useState(false);
 
   // Pixels per second.
-  // Increase this number to make the carousel faster.
-  const SPEED = 55;
+  // Lower = slower, higher = faster.
+  const SPEED = 45;
 
   useEffect(() => {
-    const carousel = carouselRef.current;
+    const track = trackRef.current;
     const firstSet = firstSetRef.current;
 
-    if (!carousel || !firstSet) {
+    if (!track || !firstSet) {
       return;
     }
+
+    const updateSetWidth = () => {
+      setWidthRef.current = firstSet.offsetWidth;
+
+      if (setWidthRef.current > 0) {
+        setIsReady(true);
+      }
+    };
+
+    updateSetWidth();
+
+    const resizeObserver = new ResizeObserver(updateSetWidth);
+    resizeObserver.observe(firstSet);
 
     const animate = (time: number) => {
       if (lastTimeRef.current === null) {
         lastTimeRef.current = time;
       }
 
-      const delta = time - lastTimeRef.current;
+      const delta = Math.min(time - lastTimeRef.current, 50);
       lastTimeRef.current = time;
 
-      const setWidth = firstSet.offsetWidth;
+      const setWidth = setWidthRef.current;
 
       if (setWidth > 0) {
-        carousel.scrollLeft += (SPEED * delta) / 1000;
+        positionRef.current += (SPEED * delta) / 1000;
 
-        /*
-         * Once we've travelled exactly one complete set,
-         * jump back by that set's width.
-         *
-         * Because the second set is identical to the first,
-         * this jump is invisible and creates a continuous loop.
-         */
-        if (carousel.scrollLeft >= setWidth) {
-          carousel.scrollLeft -= setWidth;
+        // Seamlessly loop after exactly one complete set.
+        if (positionRef.current >= setWidth) {
+          positionRef.current -= setWidth;
         }
+
+        track.style.transform = `translate3d(${-positionRef.current}px, 0, 0)`;
       }
 
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -61,34 +73,36 @@ export function ClientsGrid() {
         cancelAnimationFrame(animationFrameRef.current);
       }
 
+      resizeObserver.disconnect();
       lastTimeRef.current = null;
     };
   }, []);
 
-  const scrollByAmount = (direction: "left" | "right") => {
-    const carousel = carouselRef.current;
-    const firstSet = firstSetRef.current;
+  const moveTrack = (direction: "left" | "right") => {
+    const track = trackRef.current;
+    const setWidth = setWidthRef.current;
 
-    if (!carousel || !firstSet) {
+    if (!track || setWidth <= 0) {
       return;
     }
 
     const amount = 300;
-    const setWidth = firstSet.offsetWidth;
 
     if (direction === "right") {
-      carousel.scrollLeft += amount;
+      positionRef.current += amount;
 
-      if (carousel.scrollLeft >= setWidth) {
-        carousel.scrollLeft -= setWidth;
+      if (positionRef.current >= setWidth) {
+        positionRef.current -= setWidth;
       }
     } else {
-      carousel.scrollLeft -= amount;
+      positionRef.current -= amount;
 
-      if (carousel.scrollLeft < 0) {
-        carousel.scrollLeft += setWidth;
+      if (positionRef.current < 0) {
+        positionRef.current += setWidth;
       }
     }
+
+    track.style.transform = `translate3d(${-positionRef.current}px, 0, 0)`;
   };
 
   return (
@@ -96,7 +110,7 @@ export function ClientsGrid() {
       {/* Left arrow */}
       <button
         type="button"
-        onClick={() => scrollByAmount("left")}
+        onClick={() => moveTrack("left")}
         aria-label="Scroll clients left"
         className="absolute left-2 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-brand-accent md:left-4"
       >
@@ -106,19 +120,21 @@ export function ClientsGrid() {
       {/* Right arrow */}
       <button
         type="button"
-        onClick={() => scrollByAmount("right")}
+        onClick={() => moveTrack("right")}
         aria-label="Scroll clients right"
         className="absolute right-2 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-brand-accent md:right-4"
       >
         <ChevronRight className="size-5" />
       </button>
 
-      {/* Carousel viewport */}
-      <div
-        ref={carouselRef}
-        className="w-full overflow-hidden"
-      >
-        <div className="flex w-max items-center">
+      {/* Viewport */}
+      <div className="w-full overflow-hidden">
+        <div
+          ref={trackRef}
+          className={`flex w-max items-center will-change-transform ${
+            isReady ? "opacity-100" : "opacity-0"
+          }`}
+        >
           {/* First set */}
           <div
             ref={firstSetRef}

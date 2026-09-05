@@ -7,7 +7,7 @@ export function ClientsHeader() {
         {clientsContent.eyebrow}
       </p>
 
-      <h2 className="mt-2 text-[clamp(2.5rem,4vw,4.5rem)] font-extrabold leading-[0.98] tracking-[-0.04em] text-[#1d3557]">
+      <h2 className="mt-2 font-heading text-[clamp(2.5rem,4vw,4.5rem)] font-extrabold leading-[0.98] tracking-[-0.04em] text-[#1d3557]">
         {clientsContent.title.map((line, index) => (
           <span
             key={line}

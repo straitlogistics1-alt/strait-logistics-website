@@ -8,8 +8,9 @@ html {
   /* =========================
      TYPOGRAPHY
   ========================= */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-ibm-plex-sans);
 
-  --font-sans: var(--font-manrope);
 
   --font-size-hero: clamp(2.25rem, 5vw, 4rem);
 

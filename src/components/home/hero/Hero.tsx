@@ -32,7 +32,7 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[500px] w-full max-w-[1440px] items-center px-5 py-16 md:min-h-[560px] md:px-8 lg:min-h-[620px] lg:px-10">
         <div className="max-w-[620px]">
           {/* Heading */}
-          <h1 className="text-[clamp(2.5rem,4vw,4rem)] font-extrabold uppercase leading-[1.08] tracking-[-0.035em] text-text-primary">
+          <h1 className="text-[clamp(2.5rem,4vw,4rem)] font-heading font-extrabold uppercase leading-[1.08] tracking-[-0.035em] text-text-primary">
             {titleLines.map((line) => (
               <span key={line} className="block">
                 {line}

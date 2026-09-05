@@ -7,7 +7,7 @@ export function ServicesHeader() {
         {servicesContent.eyebrow}
       </p>
 
-      <h2 className="mt-2 text-[clamp(2rem,3vw,3.25rem)] font-extrabold leading-[1.05] tracking-[-0.035em] text-slate-900 lg:whitespace-nowrap">
+      <h2 className="mt-2 font-heading text-[clamp(2rem,3vw,3.25rem)] font-extrabold leading-[1.05] tracking-[-0.035em] text-slate-900 lg:whitespace-nowrap">
         {servicesContent.title}
       </h2>
 

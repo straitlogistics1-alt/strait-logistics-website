@@ -13,7 +13,7 @@ export function AboutContent() {
       </p>
 
       {/* Heading */}
-      <h2 className="mt-3 text-[clamp(2rem,3vw,3rem)] font-extrabold leading-[1.12] tracking-[-0.03em] text-text-primary">
+      <h2 className="mt-3 font-heading text-[clamp(2rem,3vw,3rem)] font-extrabold leading-[1.12] tracking-[-0.03em] text-text-primary">
         {titleLines.map((line) => (
           <span key={line} className="block">
             {line}

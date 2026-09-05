@@ -18,6 +18,10 @@ export const navigation: NavigationItem[] = [
     href: "#commodities",
   },
   {
+    label: "Why Choose",
+    href: "#why-choose",
+  },
+  {
     label: "Clients",
     href: "#clients",
   },
