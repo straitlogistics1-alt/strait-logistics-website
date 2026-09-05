@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import type { Service } from "@/types/services";
 
@@ -9,10 +8,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <Link
-      href={service.href}
-      className="group relative block aspect-[1.28/1] overflow-hidden rounded-[20px]"
-    >
+    <article className="group relative block aspect-[1.28/1] overflow-hidden rounded-[20px]">
       {/* Image */}
       <Image
         src={service.image}
@@ -41,6 +37,6 @@ export function ServiceCard({ service }: ServiceCardProps) {
         {/* Hover indicator */}
         <div className="mt-4 h-[2px] w-0 bg-brand-accent transition-all duration-500 group-hover:w-12" />
       </div>
-    </Link>
+    </article>
   );
 }
