@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 import { navigation } from "@/data/navigation";
+import { contactInfo } from "@/data/company";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +14,8 @@ export function Navbar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const email = contactInfo.email[0];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-on-light bg-white/80 backdrop-blur-xl">
@@ -43,6 +46,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={closeMenu}
               className={`group relative py-2 text-[0.72rem] font-semibold uppercase tracking-[0.02em] transition-colors duration-300 ${
                 index === 0
                   ? "text-brand-accent"
@@ -53,13 +57,19 @@ export function Navbar() {
 
               <span
                 className={`absolute -bottom-[15px] left-0 h-[2px] bg-action-primary transition-all duration-300 ${
-                  index === 0
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
+                  index === 0 ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
             </Link>
           ))}
+
+          {/* CTA */}
+          <a
+            href={`mailto:${email}`}
+            className="rounded-button bg-action-primary px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.02em] text-white transition-colors duration-300 hover:bg-action-primary-hover"
+          >
+            Get in Touch
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -83,7 +93,7 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={`overflow-hidden border-t border-border-on-light bg-white/95 backdrop-blur-xl transition-all duration-300 lg:hidden ${
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav
@@ -100,6 +110,15 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          {/* Mobile CTA */}
+          <a
+            href={`mailto:${email}`}
+            onClick={closeMenu}
+            className="mt-4 rounded-button bg-action-primary px-5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-action-primary-hover"
+          >
+            Get in Touch
+          </a>
         </nav>
       </div>
     </header>

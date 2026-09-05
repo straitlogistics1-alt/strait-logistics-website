@@ -14,15 +14,11 @@ export const navigation: NavigationItem[] = [
     href: "#services",
   },
   {
-    label: "Industries",
-    href: "#industries",
+    label: "Commodities",
+    href: "#commodities",
   },
   {
     label: "Clients",
     href: "#clients",
-  },
-  {
-    label: "Contact",
-    href: "#contact",
   },
 ];

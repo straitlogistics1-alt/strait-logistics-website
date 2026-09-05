@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   /* =========================
      TYPOGRAPHY
@@ -16,11 +20,8 @@
   ========================= */
 
   --color-background-page: #061a33;
-
   --color-background-section: #08213f;
-
   --color-background-elevated: #0d2d52;
-
   --color-background-subtle: #12365f;
 
   /* =========================
@@ -28,9 +29,7 @@
   ========================= */
 
   --color-action-primary: #2878d4;
-
   --color-action-primary-hover: #3a8ae3;
-
   --color-brand-accent: #3d96e8;
 
   /* =========================
@@ -38,11 +37,8 @@
   ========================= */
 
   --color-text-primary: #f4f7fb;
-
   --color-text-secondary: #b8c4d4;
-
   --color-text-muted: #8191a6;
-
   --color-text-accent: #4b9df0;
 
   /* =========================
@@ -50,9 +46,7 @@
   ========================= */
 
   --color-text-on-light-primary: #10243d;
-
   --color-text-on-light-secondary: #526174;
-
   --color-text-on-light-muted: #7b8796;
 
   /* =========================
@@ -60,9 +54,7 @@
   ========================= */
 
   --color-surface-card: #0b294b;
-
   --color-surface-card-hover: #10345e;
-
   --color-surface-light: #f4f5f6;
 
   /* =========================
@@ -70,7 +62,6 @@
   ========================= */
 
   --color-border-subtle: rgba(255, 255, 255, 0.1);
-
   --color-border-accent: rgba(61, 150, 232, 0.45);
 
   /* =========================
@@ -84,7 +75,6 @@
   ========================= */
 
   --container-max: 80rem;
-
   --spacing-section-y: 6rem;
 
   /* =========================
@@ -92,7 +82,6 @@
   ========================= */
 
   --radius-card: 0.75rem;
-
   --radius-button: 0.5rem;
 
   /* =========================
