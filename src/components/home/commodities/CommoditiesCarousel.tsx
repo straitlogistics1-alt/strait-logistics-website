@@ -20,8 +20,6 @@ export function CommoditiesCarousel() {
 
   const [isReady, setIsReady] = useState(false);
 
-  // Pixels per second.
-  // Lower = slower, higher = faster.
   const SPEED = 40;
 
   useEffect(() => {
@@ -88,7 +86,17 @@ export function CommoditiesCarousel() {
       return;
     }
 
-    const amount = 320;
+    /*
+     * Move by approximately one visible card.
+     * This keeps the arrow interaction feeling natural
+     * across different viewport widths.
+     */
+    const viewportWidth = track.parentElement?.clientWidth ?? 1000;
+
+    const amount = Math.min(
+      Math.max(viewportWidth * 0.25, 240),
+      360
+    );
 
     if (direction === "right") {
       positionRef.current += amount;
@@ -109,7 +117,7 @@ export function CommoditiesCarousel() {
 
   return (
     <div
-      className="relative mt-12 w-full overflow-hidden"
+      className="relative mt-[clamp(2rem,4vw,3.5rem)] w-full overflow-hidden"
       onMouseEnter={() => {
         isPausedRef.current = true;
       }}
@@ -138,11 +146,11 @@ export function CommoditiesCarousel() {
       </button>
 
       {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-background-page via-background-page/50 to-transparent md:w-12" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-background-page via-background-page/50 to-transparent sm:w-12 md:w-16" />
 
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-background-page via-background-page/50 to-transparent md:w-12" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-background-page via-background-page/50 to-transparent sm:w-12 md:w-16" />
 
-      {/* Carousel viewport */}
+      {/* Viewport */}
       <div className="w-full overflow-hidden">
         <div
           ref={trackRef}
@@ -153,27 +161,27 @@ export function CommoditiesCarousel() {
           {/* First set */}
           <div
             ref={firstSetRef}
-            className="flex shrink-0 gap-5 pr-5"
+            className="flex shrink-0 gap-[clamp(1rem,1.5vw,1.5rem)] pr-[clamp(1rem,1.5vw,1.5rem)]"
           >
             {commodities.map((commodity) => (
               <div
                 key={commodity.id}
-                className="w-[280px] shrink-0 md:w-[320px]"
+                className="w-[clamp(250px,27vw,340px)] shrink-0"
               >
                 <CommodityCard commodity={commodity} />
               </div>
             ))}
           </div>
 
-          {/* Identical second set */}
+          {/* Second set */}
           <div
-            className="flex shrink-0 gap-5 pr-5"
+            className="flex shrink-0 gap-[clamp(1rem,1.5vw,1.5rem)] pr-[clamp(1rem,1.5vw,1.5rem)]"
             aria-hidden="true"
           >
             {commodities.map((commodity) => (
               <div
                 key={`duplicate-${commodity.id}`}
-                className="w-[280px] shrink-0 md:w-[320px]"
+                className="w-[clamp(250px,27vw,340px)] shrink-0"
               >
                 <CommodityCard commodity={commodity} />
               </div>

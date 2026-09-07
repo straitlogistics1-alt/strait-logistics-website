@@ -30,14 +30,14 @@ const trustItems = [
 
 export function ServicesTrustBar() {
   return (
-    <div className="mx-auto mt-10 grid max-w-[1120px] divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+    <div className="mx-auto mt-[clamp(2.5rem,4vw,4rem)] grid w-full max-w-[1200px] grid-cols-1 divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
       {trustItems.map((item) => {
         const Icon = item.icon;
 
         return (
           <div
             key={item.title}
-            className="flex items-center gap-4 px-7 py-6"
+            className="flex items-center gap-4 px-[clamp(1.25rem,2vw,1.75rem)] py-[clamp(1.25rem,2vw,1.5rem)]"
           >
             <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-action-primary/10 text-action-primary">
               <Icon
@@ -46,7 +46,7 @@ export function ServicesTrustBar() {
               />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className="text-sm font-bold text-slate-800">
                 {item.title}
               </p>

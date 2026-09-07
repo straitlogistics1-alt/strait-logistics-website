@@ -14,11 +14,11 @@ export function ClientsGrid() {
   const lastTimeRef = useRef<number | null>(null);
   const positionRef = useRef(0);
   const setWidthRef = useRef(0);
+  const viewportWidthRef = useRef(0);
 
   const [isReady, setIsReady] = useState(false);
 
   // Pixels per second.
-  // Lower = slower, higher = faster.
   const SPEED = 45;
 
   useEffect(() => {
@@ -29,18 +29,21 @@ export function ClientsGrid() {
       return;
     }
 
-    const updateSetWidth = () => {
+    const updateDimensions = () => {
       setWidthRef.current = firstSet.offsetWidth;
+      viewportWidthRef.current = window.innerWidth;
 
       if (setWidthRef.current > 0) {
         setIsReady(true);
       }
     };
 
-    updateSetWidth();
+    updateDimensions();
 
-    const resizeObserver = new ResizeObserver(updateSetWidth);
+    const resizeObserver = new ResizeObserver(updateDimensions);
     resizeObserver.observe(firstSet);
+
+    window.addEventListener("resize", updateDimensions);
 
     const animate = (time: number) => {
       if (lastTimeRef.current === null) {
@@ -74,6 +77,7 @@ export function ClientsGrid() {
       }
 
       resizeObserver.disconnect();
+      window.removeEventListener("resize", updateDimensions);
       lastTimeRef.current = null;
     };
   }, []);
@@ -86,7 +90,13 @@ export function ClientsGrid() {
       return;
     }
 
-    const amount = 300;
+    const viewportWidth = viewportWidthRef.current;
+
+    // Responsive movement amount.
+    const amount = Math.min(
+      Math.max(viewportWidth * 0.2, 180),
+      320
+    );
 
     if (direction === "right") {
       positionRef.current += amount;
@@ -106,15 +116,15 @@ export function ClientsGrid() {
   };
 
   return (
-    <div className="relative mt-10 w-full">
+    <div className="relative mt-[clamp(2rem,4vw,3.5rem)] w-full">
       {/* Left arrow */}
       <button
         type="button"
         onClick={() => moveTrack("left")}
         aria-label="Scroll clients left"
-        className="absolute left-2 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-brand-accent md:left-4"
+        className="absolute left-1 top-1/2 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-brand-accent sm:left-2 sm:size-10 md:left-4"
       >
-        <ChevronLeft className="size-5" />
+        <ChevronLeft className="size-4 sm:size-5" />
       </button>
 
       {/* Right arrow */}
@@ -122,9 +132,9 @@ export function ClientsGrid() {
         type="button"
         onClick={() => moveTrack("right")}
         aria-label="Scroll clients right"
-        className="absolute right-2 top-1/2 z-20 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-brand-accent md:right-4"
+        className="absolute right-1 top-1/2 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-brand-accent sm:right-2 sm:size-10 md:right-4"
       >
-        <ChevronRight className="size-5" />
+        <ChevronRight className="size-4 sm:size-5" />
       </button>
 
       {/* Viewport */}
@@ -138,12 +148,12 @@ export function ClientsGrid() {
           {/* First set */}
           <div
             ref={firstSetRef}
-            className="flex shrink-0 items-center gap-6 pr-6 md:gap-10 md:pr-10 lg:gap-14 lg:pr-14"
+            className="flex shrink-0 items-center gap-[clamp(0.75rem,2.5vw,3.5rem)] pr-[clamp(0.75rem,2.5vw,3.5rem)]"
           >
             {clientsContent.clients.map((client) => (
               <div
                 key={client.id}
-                className="w-[220px] shrink-0 md:w-[250px] lg:w-[270px]"
+                className="w-[clamp(180px,20vw,270px)] shrink-0"
               >
                 <ClientCard client={client} />
               </div>
@@ -152,13 +162,13 @@ export function ClientsGrid() {
 
           {/* Identical second set */}
           <div
-            className="flex shrink-0 items-center gap-6 pr-6 md:gap-10 md:pr-10 lg:gap-14 lg:pr-14"
+            className="flex shrink-0 items-center gap-[clamp(0.75rem,2.5vw,3.5rem)] pr-[clamp(0.75rem,2.5vw,3.5rem)]"
             aria-hidden="true"
           >
             {clientsContent.clients.map((client) => (
               <div
                 key={client.id}
-                className="w-[220px] shrink-0 md:w-[250px] lg:w-[270px]"
+                className="w-[clamp(180px,20vw,270px)] shrink-0"
               >
                 <ClientCard client={client} />
               </div>
@@ -168,9 +178,9 @@ export function ClientsGrid() {
       </div>
 
       {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-gradient-to-r from-surface-light to-transparent md:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-surface-light to-transparent sm:w-14 md:w-24" />
 
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-l from-surface-light to-transparent md:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-surface-light to-transparent sm:w-14 md:w-24" />
     </div>
   );
 }

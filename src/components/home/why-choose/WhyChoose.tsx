@@ -9,9 +9,9 @@ export function WhyChoose() {
       id="why-choose"
       className="bg-background-page"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-20 md:px-8 md:py-24 lg:px-10 lg:py-28">
+      <div className="mx-auto w-full max-w-[1600px] px-[clamp(1.25rem,4vw,5rem)] py-[clamp(4rem,7vw,7rem)]">
         {/* Top Section */}
-        <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div className="grid items-center gap-[clamp(2.5rem,5vw,5rem)] lg:grid-cols-[0.9fr_1.1fr]">
           <WhyChooseContent />
 
           <WhyChooseVisual />

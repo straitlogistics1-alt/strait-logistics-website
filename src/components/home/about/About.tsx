@@ -7,13 +7,12 @@ export function About() {
       id="about"
       className="bg-background-section"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-20 md:px-8 md:py-24 lg:px-10 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div className="mx-auto w-full max-w-[1600px] px-[clamp(1.25rem,4vw,5rem)] py-[clamp(4rem,7vw,7rem)]">
+        <div className="grid items-center gap-[clamp(2.5rem,5vw,5rem)] lg:grid-cols-[0.95fr_1.05fr]">
           <AboutContent />
 
           <AboutVisual />
         </div>
-        
       </div>
     </section>
   );

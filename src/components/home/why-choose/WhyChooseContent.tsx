@@ -6,14 +6,14 @@ export function WhyChooseContent() {
   const titleLines = whyChooseContent.title.split("\n");
 
   return (
-    <div className="max-w-[500px]">
+    <div className="w-full max-w-[620px]">
       {/* Eyebrow */}
       <p className="text-xs font-bold uppercase tracking-[0.14em] text-text-accent">
         {whyChooseContent.eyebrow}
       </p>
 
       {/* Heading */}
-      <h2 className="mt-4 font-heading text-[clamp(2.25rem,3.2vw,3.5rem)] font-extrabold leading-[1.12] tracking-[-0.035em] text-text-primary">
+      <h2 className="mt-3 font-heading text-[clamp(2rem,3.8vw,3.75rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-text-primary">
         {titleLines.map((line) => (
           <span
             key={line}
@@ -25,10 +25,10 @@ export function WhyChooseContent() {
       </h2>
 
       {/* Accent line */}
-      <div className="mt-4 h-[2px] w-11 bg-action-primary" />
+      <div className="mt-[clamp(1rem,1.5vw,1.25rem)] h-[2px] w-11 bg-action-primary" />
 
       {/* Description */}
-      <p className="mt-4 max-w-[470px] text-sm leading-7 text-text-secondary md:text-base">
+      <p className="mt-[clamp(1rem,1.5vw,1.25rem)] w-full max-w-[520px] text-[clamp(0.95rem,1vw,1rem)] leading-7 text-text-secondary">
         {whyChooseContent.description}
       </p>
 

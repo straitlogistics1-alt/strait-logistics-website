@@ -15,17 +15,21 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function ServicesHighlights() {
   return (
-    <div className="mx-auto mt-6 flex max-w-[760px] flex-col items-center justify-center gap-5 sm:flex-row sm:gap-0">
+    <div className="mx-auto mt-[clamp(1.5rem,2.5vw,2rem)] grid w-full max-w-[900px] grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-0">
       {servicesContent.highlights.map((item, index) => {
         const Icon = iconMap[item.icon];
 
         return (
           <div
             key={item.label}
-            className="flex items-center gap-3 px-6 sm:border-r sm:border-slate-200 last:sm:border-r-0"
+            className={`flex items-center justify-center gap-3 px-4 py-2 sm:px-5 ${
+              index !== servicesContent.highlights.length - 1
+                ? "sm:border-r sm:border-slate-200"
+                : ""
+            }`}
           >
             <Icon
-              className="size-5 text-action-primary"
+              className="size-5 shrink-0 text-action-primary"
               strokeWidth={2}
             />
 

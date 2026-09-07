@@ -19,7 +19,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-on-light bg-white/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-5 md:h-[64px] md:px-8 lg:px-10">
+      <div className="mx-auto flex h-[clamp(3.75rem,5vw,4.25rem)] w-full max-w-[1600px] items-center justify-between px-[clamp(1.25rem,4vw,5rem)]">
         {/* Logo */}
         <Link
           href="#home"
@@ -34,13 +34,13 @@ export function Navbar() {
             height={70}
             priority
             quality={100}
-            className="h-auto w-[140px] md:w-[155px]"
+            className="h-auto w-[clamp(130px,12vw,180px)]"
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav
-          className="hidden items-center gap-8 lg:flex"
+          className="hidden items-center gap-[clamp(1rem,2.2vw,2rem)] lg:flex"
           aria-label="Main navigation"
         >
           {navigation.map((item, index) => (
@@ -48,7 +48,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={closeMenu}
-              className={`group relative py-2 text-sm font-semibold uppercase tracking-[0.02em] transition-colors duration-300 ${
+              className={`group relative whitespace-nowrap py-2 text-sm font-semibold uppercase tracking-[0.02em] transition-colors duration-300 ${
                 index === 0
                   ? "text-brand-accent"
                   : "text-text-on-light-primary hover:text-brand-accent"
@@ -57,7 +57,7 @@ export function Navbar() {
               {item.label}
 
               <span
-                className={`absolute -bottom-[15px] left-0 h-[2px] bg-action-primary transition-all duration-300 ${
+                className={`absolute -bottom-[clamp(10px,1vw,15px)] left-0 h-[2px] bg-action-primary transition-all duration-300 ${
                   index === 0 ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
@@ -67,7 +67,7 @@ export function Navbar() {
           {/* CTA */}
           <a
             href={`mailto:${email}`}
-            className="rounded-button bg-action-primary px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.02em] text-white transition-colors duration-300 hover:bg-action-primary-hover"
+            className="whitespace-nowrap rounded-button bg-action-primary px-[clamp(1rem,1.5vw,1.25rem)] py-2.5 text-sm font-semibold uppercase tracking-[0.02em] text-white transition-colors duration-300 hover:bg-action-primary-hover"
           >
             Get in Touch
           </a>
@@ -94,11 +94,13 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={`overflow-hidden border-t border-border-on-light bg-white/95 backdrop-blur-xl transition-all duration-300 lg:hidden ${
-          isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          isMenuOpen
+            ? "max-h-[500px] opacity-100"
+            : "max-h-0 opacity-0"
         }`}
       >
         <nav
-          className="mx-auto flex max-w-[1280px] flex-col px-5 py-4"
+          className="mx-auto flex w-full max-w-[1600px] flex-col px-[clamp(1.25rem,4vw,5rem)] py-3 sm:py-4"
           aria-label="Mobile navigation"
         >
           {navigation.map((item) => (
@@ -106,7 +108,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={closeMenu}
-              className="border-b border-border-on-light py-4 text-sm font-semibold uppercase tracking-wide text-text-on-light-primary transition-colors hover:text-brand-accent"
+              className="border-b border-border-on-light py-3.5 text-sm font-semibold uppercase tracking-wide text-text-on-light-primary transition-colors hover:text-brand-accent sm:py-4"
             >
               {item.label}
             </Link>

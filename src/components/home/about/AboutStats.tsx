@@ -18,7 +18,7 @@ const iconMap: Record<
 
 export function AboutStats() {
   return (
-    <div className="mt-10 grid gap-6 sm:grid-cols-3">
+    <div className="mt-[clamp(2rem,3vw,2.75rem)] grid grid-cols-1 gap-[clamp(1.25rem,2.5vw,2rem)] sm:grid-cols-2 lg:grid-cols-3">
       {aboutContent.stats.map((stat) => {
         const Icon = iconMap[stat.icon];
 
@@ -34,8 +34,8 @@ export function AboutStats() {
               />
             </div>
 
-            <div>
-              <p className="text-lg font-bold leading-none text-text-primary">
+            <div className="min-w-0">
+              <p className="text-[clamp(1rem,1.5vw,1.125rem)] font-bold leading-none text-text-primary">
                 {stat.value}
               </p>
 

@@ -8,13 +8,18 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <article className="group relative block aspect-[1.28/1] overflow-hidden rounded-[20px]">
+    <article className="group relative block aspect-[1.28/1] w-full overflow-hidden rounded-[20px]">
       {/* Image */}
       <Image
         src={service.image}
         alt={service.title}
         fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="
+          (min-width: 1536px) 25vw,
+          (min-width: 1024px) 33vw,
+          (min-width: 640px) 50vw,
+          100vw
+        "
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       />
 
@@ -25,12 +30,12 @@ export function ServiceCard({ service }: ServiceCardProps) {
       <div className="absolute inset-0 bg-[#0b3b6f]/10 transition-colors duration-500 group-hover:bg-[#0b3b6f]/25" />
 
       {/* Content */}
-      <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+      <div className="absolute inset-x-0 bottom-0 p-[clamp(1.25rem,2vw,1.75rem)]">
         <p className="text-[0.7rem] font-bold uppercase tracking-[0.28em] text-white/75">
           Our Services
         </p>
 
-        <h3 className="mt-3 max-w-[18rem] text-2xl font-extrabold leading-[1.08] tracking-[-0.025em] text-white transition-transform duration-500 ease-out group-hover:-translate-y-1 md:text-[1.7rem]">
+        <h3 className="mt-3 max-w-[18rem] text-[clamp(1.35rem,2vw,1.7rem)] font-extrabold leading-[1.08] tracking-[-0.025em] text-white transition-transform duration-500 ease-out group-hover:-translate-y-1">
           {service.title}
         </h3>
 

@@ -16,8 +16,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border-subtle bg-background-page">
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-12 md:px-8 md:py-16 lg:px-10">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.25fr_0.7fr_1.2fr_0.8fr] lg:gap-12">
+      <div className="mx-auto w-full max-w-[1600px] px-[clamp(1.25rem,4vw,5rem)] py-[clamp(3rem,5vw,5rem)]">
+        <div className="grid gap-[clamp(2.5rem,4vw,4rem)] sm:grid-cols-2 lg:grid-cols-[1.2fr_0.75fr_1.2fr_0.8fr]">
           {/* Company */}
           <div>
             <Image
@@ -26,10 +26,10 @@ export function Footer() {
               width={210}
               height={70}
               quality={100}
-              className="h-auto w-[180px]"
+              className="h-auto w-[clamp(150px,14vw,180px)]"
             />
 
-            <p className="mt-6 max-w-[290px] text-sm leading-7 text-text-secondary">
+            <p className="mt-[clamp(1rem,2vw,1.5rem)] w-full max-w-[320px] text-sm leading-7 text-text-secondary">
               Your trusted logistics partner for customs clearance, freight
               forwarding and end-to-end supply chain solutions.
             </p>
@@ -41,7 +41,10 @@ export function Footer() {
               Navigation
             </p>
 
-            <nav className="mt-5 flex flex-col gap-3" aria-label="Footer navigation">
+            <nav
+              className="mt-4 flex flex-col gap-2.5 sm:mt-5 sm:gap-3"
+              aria-label="Footer navigation"
+            >
               {navigation.map((item) => (
                 <Link
                   key={item.href}
@@ -60,7 +63,7 @@ export function Footer() {
               Contact Us
             </p>
 
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-4 sm:mt-5">
               {/* Address */}
               <Link
                 href={contactInfo.address.mapUrl}
@@ -96,12 +99,12 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <Mail className="mt-0.5 size-5 shrink-0 text-brand-accent" />
 
-                <div className="flex flex-col gap-1">
+                <div className="flex min-w-0 flex-col gap-1">
                   {contactInfo.email.map((email) => (
                     <Link
                       key={email}
                       href={`mailto:${email}`}
-                      className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+                      className="break-all text-sm text-text-secondary transition-colors hover:text-text-primary"
                     >
                       {email}
                     </Link>
@@ -117,7 +120,7 @@ export function Footer() {
               Get in Touch
             </p>
 
-            <p className="mt-5 max-w-[220px] text-sm leading-7 text-text-secondary">
+            <p className="mt-4 max-w-[260px] text-sm leading-7 text-text-secondary sm:mt-5">
               Have a shipment to move?
               <br />
               We&apos;re here to help.
@@ -125,7 +128,7 @@ export function Footer() {
 
             <Link
               href={`mailto:${email}`}
-              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-button bg-action-primary px-7 text-xs font-bold uppercase tracking-wide text-text-primary transition-colors hover:bg-action-primary-hover"
+              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-button bg-action-primary px-7 text-xs font-bold uppercase tracking-wide text-text-primary transition-colors hover:bg-action-primary-hover sm:mt-5"
             >
               Send Enquiry
             </Link>
@@ -133,8 +136,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-border-subtle pt-5">
-          <p className="text-center text-xs text-text-muted">
+        <div className="mt-[clamp(2.5rem,4vw,3.5rem)] border-t border-border-subtle pt-5">
+          <p className="text-center text-xs leading-5 text-text-muted">
             © {new Date().getFullYear()} {company.name}. All Rights Reserved.
           </p>
         </div>

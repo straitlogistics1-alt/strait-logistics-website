@@ -9,7 +9,12 @@ export function AboutVisual() {
         src={aboutContent.image.src}
         alt={aboutContent.image.alt}
         fill
-        sizes="(min-width: 1024px) 50vw, 100vw"
+        sizes="
+          (min-width: 1280px) 50vw,
+          (min-width: 1024px) 52vw,
+          (min-width: 768px) 90vw,
+          100vw
+        "
         className="object-cover"
       />
 

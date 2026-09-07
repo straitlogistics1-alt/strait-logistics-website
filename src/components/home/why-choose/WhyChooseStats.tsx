@@ -22,31 +22,31 @@ const iconMap: Record<
 
 export function WhyChooseStats() {
   return (
-    <div className="mt-8 rounded-[1.5rem] border border-border-subtle bg-background-elevated/30 px-5 py-7 md:px-8 lg:mt-10">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
+    <div className="mt-[clamp(2rem,3vw,2.5rem)] rounded-[1.5rem] border border-border-subtle bg-background-elevated/30 px-[clamp(1rem,2vw,2rem)] py-[clamp(1.5rem,3vw,2rem)] lg:mt-[clamp(2.5rem,3vw,3rem)]">
+      <div className="grid gap-[clamp(1.25rem,2vw,1.5rem)] sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
         {whyChooseContent.stats.map((stat, index) => {
           const Icon = iconMap[stat.icon];
 
           return (
             <div
               key={stat.label}
-              className={`flex items-center gap-4 lg:px-6 ${
+              className={`flex items-center gap-4 lg:px-[clamp(1rem,1.5vw,1.5rem)] ${
                 index !== 0
                   ? "lg:border-l lg:border-border-subtle"
                   : ""
               }`}
             >
               <Icon
-                className="size-9 shrink-0 text-text-accent"
+                className="size-8 shrink-0 text-text-accent sm:size-9"
                 strokeWidth={1.6}
               />
 
-              <div>
-                <p className="text-2xl font-extrabold leading-none text-text-primary">
+              <div className="min-w-0">
+                <p className="text-[clamp(1.5rem,2vw,1.75rem)] font-extrabold leading-none text-text-primary">
                   {stat.value}
                 </p>
 
-                <p className="mt-2 text-xs font-medium text-text-secondary">
+                <p className="mt-2 text-xs font-medium leading-5 text-text-secondary">
                   {stat.label}
                 </p>
               </div>

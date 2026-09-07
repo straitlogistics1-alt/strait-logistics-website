@@ -37,14 +37,14 @@ const benefits: Benefit[] = [
 
 export function CommoditiesBenefits() {
   return (
-    <div className="mt-12 grid overflow-hidden rounded-card border border-border-subtle bg-background-elevated sm:grid-cols-2 lg:grid-cols-4">
+    <div className="mt-[clamp(2.5rem,5vw,4rem)] grid overflow-hidden rounded-card border border-border-subtle bg-background-elevated sm:grid-cols-2 lg:grid-cols-4">
       {benefits.map((benefit, index) => {
         const Icon = benefit.icon;
 
         return (
           <div
             key={benefit.title}
-            className={`flex items-center gap-4 px-6 py-6 ${
+            className={`flex items-center gap-4 px-[clamp(1.25rem,2vw,1.5rem)] py-[clamp(1.25rem,2vw,1.5rem)] ${
               index < benefits.length - 1
                 ? "border-b border-border-subtle lg:border-r lg:border-b-0"
                 : ""
@@ -57,7 +57,7 @@ export function CommoditiesBenefits() {
               />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className="text-sm font-bold text-text-primary">
                 {benefit.title}
               </p>

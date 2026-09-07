@@ -8,7 +8,7 @@ export function Commodities() {
       id="commodities"
       className="bg-background-page"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-20 md:px-8 md:py-24 lg:px-10 lg:py-28">
+      <div className="mx-auto w-full max-w-[1600px] px-[clamp(1.25rem,4vw,5rem)] py-[clamp(4rem,7vw,7rem)]">
         <CommoditiesHeader />
 
         <CommoditiesCarousel />
