@@ -66,7 +66,7 @@ export function Navbar() {
 
           {/* CTA */}
           <a
-            href={`mailto:${email}`}
+            href="#contact"
             className="whitespace-nowrap rounded-button bg-action-primary px-[clamp(1rem,1.5vw,1.25rem)] py-2.5 text-sm font-semibold uppercase tracking-[0.02em] text-white transition-colors duration-300 hover:bg-action-primary-hover"
           >
             Get in Touch
@@ -116,7 +116,7 @@ export function Navbar() {
 
           {/* Mobile CTA */}
           <a
-            href={`mailto:${email}`}
+            href="#contact"
             onClick={closeMenu}
             className="mt-4 rounded-button bg-action-primary px-5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-action-primary-hover"
           >

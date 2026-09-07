@@ -1,4 +1,3 @@
-import { contactInfo } from "@/data/company";
 
 export const heroContent = {
   title: "Moving Cargo.\nConnecting Worlds.",
@@ -13,6 +12,6 @@ export const heroContent = {
 
   secondaryAction: {
     label: "Contact Us",
-    href: `mailto:${contactInfo.email[0]}`,
+    href: "#contact ",
   },
 } as const;
