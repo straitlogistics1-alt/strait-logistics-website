@@ -34,7 +34,7 @@ export function Navbar() {
             height={70}
             priority
             quality={100}
-            className="h-auto w-[clamp(130px,12vw,180px)]"
+            className="h-auto w-[clamp(145px,13vw,200px)]"
           />
         </Link>
 
